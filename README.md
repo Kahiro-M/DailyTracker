@@ -7,9 +7,9 @@
 |package|ver.|
 |:--|:--|
 |python |3.7.5 |
-|numpy |1.18.1 |
+|numpy |1.17.4 |
 |pandas |1.0.1 |
-|matplotlib |3.2.0 |
+|matplotlib |3.2.1 |
 |seaborn |0.10.0 |
 
 ## インストール方法
@@ -22,8 +22,8 @@ pip install seaborn
 
 ## 実行方法
 1. csvデータを用意
-2. `py py makeFig.py`　もしくは　build.batかbuild.shを実行
-3. 生成されたindex.htmlを開く　もしくはGitHub pageにアクセス
+2. `py makeFig.py`　もしくは　build.batかbuild.shを実行
+3. 生成されたindex.htmlを開く　もしくは　GitHub pageにアクセス
 
 ### データ構造
 data.csvのデータ構造（例）
