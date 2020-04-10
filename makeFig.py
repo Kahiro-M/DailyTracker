@@ -60,7 +60,7 @@ fig.set_xticklabels(anlyDf.day, rotation="90")
 
 # 凡例、タイトル
 plt.legend()
-plt.title("Sleep time (hour) with drank Tea or Caffee (100ml)")  
+plt.title("Sleep time (hour) with drank Tea or Caffee (100ml) intake the day before")  
 
 # 画像の保存と画像データのリフレッシュ
 plt.savefig("line.png")
@@ -69,5 +69,6 @@ plt.clf()
 # html output
 with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write(html_header)
+  fileObj.write("その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量")
   fileObj.write("<img src='line.png'>")
   fileObj.write(html_footer)
