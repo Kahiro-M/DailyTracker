@@ -47,7 +47,7 @@ anlyDf=pd.DataFrame({
   "data":np.concatenate([
       csvData.hour,
       [0], # この0mlを挿入することで飲み物の日付を翌日の睡眠時間と合わせる
-      csvData.drank,
+      csvData.drank/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
     ]),
   })  
 print(anlyDf)
