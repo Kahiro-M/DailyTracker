@@ -52,7 +52,7 @@ anlyDf=pd.DataFrame({
   })  
 print(anlyDf)
 
-# プロット
+# 折れ線グラフプロット
 fig = sns.lineplot(x="day", y="data",data=anlyDf,hue="type",style="type",markers=True)
 
 # x軸ラベルを設定＆ラベル表示を90度回転
@@ -66,9 +66,20 @@ plt.title("Sleep time (hour) with drank Tea or Caffee (100ml) intake the day bef
 plt.savefig("line.png")
 plt.clf()
 
+
+# 散布図と回帰分析(信頼区間95%)プロット
+fig = sns.regplot(x="drank", y="hour", data=csvData, ci=95)
+
+# 画像の保存と画像データのリフレッシュ
+plt.savefig("reg.png")
+plt.clf()
+
+
 # html output
 with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write(html_header)
-  fileObj.write("その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量")
+  fileObj.write("その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量<br>")
   fileObj.write("<img src='line.png'>")
+  fileObj.write("<br>")
+  fileObj.write("<img src='reg.png'>")
   fileObj.write(html_footer)
