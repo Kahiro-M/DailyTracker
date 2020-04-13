@@ -1,6 +1,4 @@
 function readFirstOnly() {
-    var data = getCSV(); //最初に実行される
-    console.log(data)
     var ctx = document.getElementById('myLineChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
