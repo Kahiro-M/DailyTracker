@@ -57,8 +57,8 @@ function readFirstOnly() {
                         8.5,
                         7.5,
                     ],
-                    pointRadius:8,
-                    pointBorderWidth:4,
+                    // pointRadius:8,
+                    // pointBorderWidth:4,
                 },
                 {
                     label: 'Tea/Coffee(100ml)',
@@ -80,8 +80,8 @@ function readFirstOnly() {
                     ],
                     borderDash: [8, 2],
                     pointStyle: 'crossRot',
-                    pointRadius:8,
-                    pointBorderWidth:4,
+                    // pointRadius:8,
+                    // pointBorderWidth:4,
                 },
             ]
         },

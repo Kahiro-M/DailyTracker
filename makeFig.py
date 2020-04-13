@@ -15,7 +15,8 @@ html_header = """
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="makeFig.js"></script>
+    <script src="./data.js"></script>
+    <script src="./makeFig.js"></script>
       <!--
       -->
     </style>
@@ -35,6 +36,7 @@ html_footer = """
 # データ読み込み
 csvData = pd.read_csv("./data.csv",encoding="utf_8")
 print(csvData)
+csvData.to_json("./data.json") 
 
 # 飲んだ飲み物の量は翌日の睡眠時間に関係があるので、
 # 飲んだ量を翌日の日付と紐づけるために一日ずらしたデータに整形する。
