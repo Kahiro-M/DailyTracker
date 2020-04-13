@@ -5,12 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="makeFig.js"></script>
       <!--
       -->
     </style>
   </head>
-  <body>
+  <body onload="readFirstOnly()">
 その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量<br><img src='line.png'><br><img src='reg.png'>
+    <canvas id="myLineChart"></canvas>
+
   </body>
 </html>

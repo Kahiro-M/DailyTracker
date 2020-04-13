@@ -14,12 +14,17 @@ html_header = """
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="makeFig.js"></script>
       <!--
       -->
     </style>
   </head>
-  <body>
+  <body onload="readFirstOnly()">
+"""
+
+html_canvas = """
+    <canvas id="myLineChart"></canvas>
 """
 
 html_footer = """
@@ -82,4 +87,5 @@ with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write("<img src='line.png'>")
   fileObj.write("<br>")
   fileObj.write("<img src='reg.png'>")
+  fileObj.write(html_canvas)
   fileObj.write(html_footer)
