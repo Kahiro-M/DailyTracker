@@ -23,7 +23,7 @@ html_header = """
   <body onload="readFirstOnly()">
 """
 
-html_canvas = """
+html_lineCanvas = """
     <canvas id="myLineChart"></canvas>
 """
 
@@ -86,6 +86,6 @@ with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write("その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量<br>")
   fileObj.write("<img src='line.png'>")
   fileObj.write("<br>")
+  fileObj.write(html_lineCanvas)
   fileObj.write("<img src='reg.png'>")
-  fileObj.write(html_canvas)
   fileObj.write(html_footer)
