@@ -42,19 +42,19 @@ csvData.to_json("./data.json")
 # 飲んだ量を翌日の日付と紐づけるために一日ずらしたデータに整形する。
 anlyDf=pd.DataFrame({
   "day":np.concatenate([
-      csvData.day[92:],
-      csvData.day[92:],
+      csvData.day[153:],
+      csvData.day[153:],
       [0], # 飲み物の日付が一日後ろにずれるので行列の大きさを調整する
     ]),
   "type":np.concatenate([
-      np.tile("Sleep(hour)",len(csvData.hour[92:])),
-      (np.tile("Tea/Coffe(100ml)",len(csvData.drank[92:]))),
+      np.tile("Sleep(hour)",len(csvData.hour[153:])),
+      (np.tile("Tea/Coffe(100ml)",len(csvData.drank[153:]))),
       ["Tea/Coffe(100ml)"], # 飲み物の日付が一日後ろにずれるので行列の大きさを調整する
     ]),
   "data":np.concatenate([
-      csvData.hour[92:],
+      csvData.hour[153:],
       [0], # この0mlを挿入することで飲み物の日付を翌日の睡眠時間と合わせる
-      csvData.drank[92:]/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
+      csvData.drank[153:]/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
     ]),
   })  
 print(anlyDf)
@@ -102,4 +102,8 @@ with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write("<br>")
   fileObj.write(html_lineCanvas)
   fileObj.write("<img src='reg.png'>")
+  fileObj.write("<br>")
+  fileObj.write("<img src='bar.png'>")
+  fileObj.write("<br>")
+  fileObj.write("<img src='box.png'>")
   fileObj.write(html_footer)
