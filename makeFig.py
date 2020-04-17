@@ -38,32 +38,11 @@ csvData = pd.read_csv("./data.csv",encoding="utf_8")
 print(csvData)
 csvData.to_json("./data.json") 
 
-# 飲んだ飲み物の量は翌日の睡眠時間に関係があるので、
-# 飲んだ量を翌日の日付と紐づけるために一日ずらしたデータに整形する。
-anlyDf=pd.DataFrame({
-  "day":np.concatenate([
-      csvData.day[153:],
-      csvData.day[153:],
-      [0], # 飲み物の日付が一日後ろにずれるので行列の大きさを調整する
-    ]),
-  "type":np.concatenate([
-      np.tile("Sleep(hour)",len(csvData.hour[153:])),
-      (np.tile("Tea/Coffe(100ml)",len(csvData.coffee[153:]))),
-      ["Tea/Coffe(100ml)"], # 飲み物の日付が一日後ろにずれるので行列の大きさを調整する
-    ]),
-  "data":np.concatenate([
-      csvData.hour[153:],
-      [0], # この0mlを挿入することで飲み物の日付を翌日の睡眠時間と合わせる
-      csvData.coffee[153:]/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
-    ]),
-  })  
-print(anlyDf)
-
 # 折れ線グラフプロット
-fig = sns.lineplot(x="day", y="data",data=anlyDf,hue="type",style="type")
+fig = sns.lineplot(x=csvData.day[153:],y=csvData.hour[153:],label="sleep[hour]")
+fig = sns.lineplot(x=csvData.day[153:],y=csvData.coffee[153:]/100,label="Tea/Coffee[100ml]")
 
-# x軸ラベルを設定＆ラベル表示を90度回転
-fig.set_xticklabels(anlyDf.day, rotation="90")
+fig.set_xticklabels(csvData.day[153:], rotation="90")
 
 # 凡例、タイトル
 plt.legend()
