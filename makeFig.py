@@ -48,13 +48,13 @@ anlyDf=pd.DataFrame({
     ]),
   "type":np.concatenate([
       np.tile("Sleep(hour)",len(csvData.hour[153:])),
-      (np.tile("Tea/Coffe(100ml)",len(csvData.drank[153:]))),
+      (np.tile("Tea/Coffe(100ml)",len(csvData.coffee[153:]))),
       ["Tea/Coffe(100ml)"], # 飲み物の日付が一日後ろにずれるので行列の大きさを調整する
     ]),
   "data":np.concatenate([
       csvData.hour[153:],
       [0], # この0mlを挿入することで飲み物の日付を翌日の睡眠時間と合わせる
-      csvData.drank[153:]/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
+      csvData.coffee[153:]/100,# 睡眠時間と有効桁数を合わせるために100ml単位にする
     ]),
   })  
 print(anlyDf)
@@ -67,7 +67,7 @@ fig.set_xticklabels(anlyDf.day, rotation="90")
 
 # 凡例、タイトル
 plt.legend()
-plt.title("Sleep time (hour) with drank Tea or Caffee (100ml) intake the day before")  
+plt.title("Sleep time (hour) with coffee Tea or coffee (100ml) intake the day before")  
 
 # 画像の保存と画像データのリフレッシュ
 plt.savefig("line.png")
@@ -87,10 +87,16 @@ plt.savefig("box.png")
 plt.clf()
 
 # 散布図と回帰分析(信頼区間95%)プロット
-fig = sns.regplot(x="drank", y="hour", data=csvData, ci=95)
-
+fig = sns.regplot(x="coffee", y="hour", data=csvData[153:], ci=95)
 # 画像の保存と画像データのリフレッシュ
 plt.savefig("reg.png")
+plt.clf()
+
+
+# 散布図行列プロット
+fig = sns.pairplot(data=csvData,hue="WoD",hue_order=['Sun.','Mon.','Tue.','Wed.','Thu.','Fri.','Sat.'])
+# 画像の保存と画像データのリフレッシュ
+plt.savefig("pair.png")
 plt.clf()
 
 
@@ -106,4 +112,6 @@ with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write("<img src='bar.png'>")
   fileObj.write("<br>")
   fileObj.write("<img src='box.png'>")
+  fileObj.write("<br>")
+  fileObj.write("<img src='pair.png'>")
   fileObj.write(html_footer)
