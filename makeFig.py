@@ -14,18 +14,12 @@ html_header = """
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="./data.js"></script>
-    <script src="./makeFig.js"></script>
       <!--
       -->
     </style>
   </head>
   <body onload="readFirstOnly()">
-"""
-
-html_lineCanvas = """
-    <canvas id="myLineChart"></canvas>
 """
 
 html_footer = """
@@ -85,7 +79,6 @@ with open("index.html", mode="w", encoding="utf_8") as fileObj:
   fileObj.write("その日の睡眠時間と<b>前日の</b>カフェイン飲料摂取量<br>")
   fileObj.write("<img src='line.png'>")
   fileObj.write("<br>")
-  fileObj.write(html_lineCanvas)
   fileObj.write("<img src='reg.png'>")
   fileObj.write("<br>")
   fileObj.write("<img src='bar.png'>")
