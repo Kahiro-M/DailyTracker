@@ -65,13 +65,6 @@ fig = sns.regplot(x="coffee",y="hour",data=csvData[153:],ci=95)
 plt.savefig("reg.png")
 plt.clf()
 
-# 散布図と回帰分析(信頼区間95%)プロット
-fig = sns.regplot(x="hour",y="coffee",data=csvData[153:],ci=95)
-# 画像の保存と画像データのリフレッシュ
-plt.savefig("reg2.png")
-plt.clf()
-
-
 
 # 散布図行列プロット
 fig = sns.pairplot(data=csvData,hue="WoD",hue_order=['Sun.','Mon.','Tue.','Wed.','Thu.','Fri.','Sat.'])
